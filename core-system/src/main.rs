@@ -18,7 +18,8 @@ fn main() {
 
 fn call_dynamic(path: &str) -> Result<(), Box<dyn std::error::Error>> {
 	unsafe {
-		let library = libloading::Library::new(path)?;
+		let path = std::path::Path::new(path);
+		let library = libloading::Library::new(path.to_str().unwrap())?;
 		let handler: libloading::Symbol<unsafe extern fn()> = library.get(b"handler")?;
 		Ok(handler())
 	}
