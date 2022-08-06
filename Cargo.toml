@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+    "core-system",
+    "first-plugin",
+    "second-plugin",
+]
